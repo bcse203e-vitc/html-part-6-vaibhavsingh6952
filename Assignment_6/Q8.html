@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GCD Calculator</title>
+
+</head>
+<body>
+  <h1>GCD Calculator</h1>
+
+  <div>
+    <label for="gcdInputA">Enter first number:</label>
+    <input type="number" id="gcdInputA" placeholder="e.g., 12">
+    <label for="gcdInputB">Enter second number:</label>
+    <input type="number" id="gcdInputB" placeholder="e.g., 18">
+    <button onclick="displayGCD()">Calculate GCD (Iterative)</button>
+    <button onclick="displayGCDRecursive()">Calculate GCD (Recursive)</button>
+    <div id="gcdResult" class="result"></div>
+  </div>
+
+  <script>
+ 
+    function gcd(a, b) {
+      a = Math.abs(a);
+      b = Math.abs(b);
+      while (b !== 0) {
+        const temp = b;
+        b = a % b;
+        a = temp;
+      }
+      return a;
+    }
+
+ 
+    function gcdRecursive(a, b) {
+      a = Math.abs(a);
+      b = Math.abs(b);
+      if (b === 0) return a;
+      return gcdRecursive(b, a % b);
+    }
+
+    function displayGCD() {
+      const a = parseInt(document.getElementById('gcdInputA').value, 10);
+      const b = parseInt(document.getElementById('gcdInputB').value, 10);
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('gcdResult').textContent = 'Please enter valid numbers.';
+        return;
+      }
+      const result = gcd(a, b);
+      document.getElementById('gcdResult').textContent = GCD (Iterative) of ${a} and ${b} is ${result}.;
+    }
+
+    function displayGCDRecursive() {
+      const a = parseInt(document.getElementById('gcdInputA').value, 10);
+      const b = parseInt(document.getElementById('gcdInputB').value, 10);
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('gcdResult').textContent = 'Please enter valid numbers.';
+        return;
+      }
+      const result = gcdRecursive(a, b);
+      document.getElementById('gcdResult').textContent = GCD (Recursive) of ${a} and ${b} is ${result}.;
+    }
+  </script>
+</body>
+</html>
