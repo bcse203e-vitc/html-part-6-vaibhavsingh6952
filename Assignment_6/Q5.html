@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Digits</title>
+</head>
+<body>
+
+    <h2>Count Digits in a Number</h2>
+    <input type="number" id="numInput" placeholder="Enter a number">
+    <button onclick="countDigits()">Count</button>
+    
+    <p id="result"></p>
+
+    <script>
+        function countDigits() {
+            let num = document.getElementById("numInput").value;
+
+            if (num === "") {
+                document.getElementById("result").innerText = "Please enter a number!";
+                return;
+            }
+
+            let digitCount = num.toString().length;
+            if (num < 0) digitCount--; // Ignore the negative sign
+
+            document.getElementById("result").innerText = Number of digits: ${digitCount};
+        }
+    </script>
+
+</body>
+</html>
